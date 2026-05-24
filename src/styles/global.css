@@ -278,19 +278,17 @@ section.tight {
   overflow: hidden;
   box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 4px 20px rgba(0,0,0,0.2);
   text-align: left;
-  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition: box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1),
               border-color 320ms ease;
 }
 .hero-term:hover {
-  transform: translateY(-3px);
-  border-color: rgba(125, 151, 255, 0.4);
+  border-color: rgba(125, 151, 255, 0.25);
   box-shadow:
-    0 32px 96px rgba(0, 0, 0, 0.5),
-    0 8px 24px rgba(0, 0, 0, 0.22),
-    0 0 0 1px rgba(125, 151, 255, 0.25),
-    0 0 60px rgba(125, 151, 255, 0.18),
-    0 0 120px rgba(217, 70, 239, 0.08);
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(125, 151, 255, 0.12),
+    0 0 60px rgba(125, 151, 255, 0.08),
+    0 0 120px rgba(217, 70, 239, 0.04);
 }
 
 .hero-term-head {
@@ -383,19 +381,17 @@ section.tight {
 .tok-c { color: var(--fg-3); font-style: italic; }
 .tok-fn { color: var(--acc-strong); }
 
-/* ─── Light mode shadow overrides ─── */
-/* 保留原暗色阴影的扩散,alpha 大幅调浅(0.45/0.2 → 0.04/0.02) */
-[data-mode="light"] .hero-term,
-[data-mode="light"] .mock-frame {
+/* ─── Light mode shadow overrides (hero-term only;
+   mock-frame 在 index.astro scoped style 里覆盖) ─── */
+[data-mode="light"] .hero-term {
   box-shadow: 0 24px 80px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.02);
 }
-[data-mode="light"] .hero-term:hover,
-[data-mode="light"] .mock-frame:hover {
-  border-color: rgba(125, 151, 255, 0.5);
+[data-mode="light"] .hero-term:hover {
+  border-color: rgba(125, 151, 255, 0.3);
   box-shadow:
-    0 32px 96px rgba(0, 0, 0, 0.06),
-    0 8px 24px rgba(0, 0, 0, 0.04),
-    0 0 0 1px rgba(125, 151, 255, 0.35),
-    0 0 60px rgba(125, 151, 255, 0.22),
-    0 0 120px rgba(217, 70, 239, 0.12);
+    0 24px 80px rgba(0, 0, 0, 0.04),
+    0 4px 20px rgba(0, 0, 0, 0.02),
+    0 0 0 1px rgba(125, 151, 255, 0.15),
+    0 0 60px rgba(125, 151, 255, 0.1),
+    0 0 120px rgba(217, 70, 239, 0.05);
 }

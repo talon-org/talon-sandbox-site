@@ -695,19 +695,31 @@ url = <span class="tok-k">await</span> sb.<span class="tok-fn">expose</span>(<sp
   font-size: 11.5px;
   position: relative;
   min-height: 380px;
-  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1),
+  transition: box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1),
               border-color 320ms ease;
 }
 .mock-frame:hover {
-  transform: translateY(-3px);
-  border-color: rgba(125, 151, 255, 0.4);
+  border-color: rgba(125, 151, 255, 0.25);
   box-shadow:
-    0 32px 96px rgba(0, 0, 0, 0.5),
-    0 8px 24px rgba(0, 0, 0, 0.22),
-    0 0 0 1px rgba(125, 151, 255, 0.25),
-    0 0 60px rgba(125, 151, 255, 0.18),
-    0 0 120px rgba(217, 70, 239, 0.08);
+    0 24px 80px rgba(0, 0, 0, 0.45),
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(125, 151, 255, 0.12),
+    0 0 60px rgba(125, 151, 255, 0.08),
+    0 0 120px rgba(217, 70, 239, 0.04);
+}
+
+/* 明亮主题覆盖 — 写在 scoped style 内才能赢 [data-mode="light"] .mock-frame 的特异性 */
+:global([data-mode="light"]) .mock-frame {
+  box-shadow: 0 24px 80px rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.02);
+}
+:global([data-mode="light"]) .mock-frame:hover {
+  border-color: rgba(125, 151, 255, 0.3);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.04),
+    0 4px 20px rgba(0, 0, 0, 0.02),
+    0 0 0 1px rgba(125, 151, 255, 0.15),
+    0 0 60px rgba(125, 151, 255, 0.1),
+    0 0 120px rgba(217, 70, 239, 0.05);
 }
 
 .mock-frame::after {
