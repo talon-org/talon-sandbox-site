@@ -370,7 +370,8 @@ section.tight {
 .tok-fn { color: var(--acc-strong); }
 
 /* ─── Light mode shadow overrides ─── */
+/* 保留原暗色阴影的扩散尺寸,只把 alpha 大幅调浅(0.45/0.2 → 0.08/0.04) */
 [data-mode="light"] .hero-term,
 [data-mode="light"] .mock-frame {
-  box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.08), 0 4px 20px rgba(0,0,0,0.04);
 }
