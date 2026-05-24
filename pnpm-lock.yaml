@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@talon-sandbox/tokens': file:../talon-sandbox-ui/packages/tokens
-
 importers:
 
   .:
@@ -15,11 +12,11 @@ importers:
         specifier: ^3.6.3
         version: 3.6.3(@types/react-dom@18.3.7(@types/react@18.3.29))(@types/react@18.3.29)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@talon-sandbox/react':
-        specifier: file:../talon-sandbox-ui/packages/react
-        version: file:../talon-sandbox-ui/packages/react(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.1.0
+        version: 0.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@talon-sandbox/tokens':
-        specifier: file:../talon-sandbox-ui/packages/tokens
-        version: file:../talon-sandbox-ui/packages/tokens
+        specifier: ^0.1.0
+        version: 0.1.0
       astro:
         specifier: ^4.16.18
         version: 4.16.19(rollup@4.60.4)(typescript@5.9.3)
@@ -602,14 +599,14 @@ packages:
   '@shikijs/vscode-textmate@10.0.2':
     resolution: {integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==}
 
-  '@talon-sandbox/react@file:../talon-sandbox-ui/packages/react':
-    resolution: {directory: ../talon-sandbox-ui/packages/react, type: directory}
+  '@talon-sandbox/react@0.1.0':
+    resolution: {integrity: sha512-MP//DHS/ozoxrGquXLINfDd8IEHM0zJTfeWRP98JKrG9B41P70Z2kjoQRh3jGnEWNw/5qDa/nJFVzr1HgnmEyQ==}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
 
-  '@talon-sandbox/tokens@file:../talon-sandbox-ui/packages/tokens':
-    resolution: {directory: ../talon-sandbox-ui/packages/tokens, type: directory}
+  '@talon-sandbox/tokens@0.1.0':
+    resolution: {integrity: sha512-mxZSjfBNgD8Ij5yDVuWx2yIK2rJJTIQtky83g03iVF0DT0nAEpar8dl2x20rrT1w8pKuuqoSOCu/YCGfjOQnFw==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2187,14 +2184,14 @@ snapshots:
 
   '@shikijs/vscode-textmate@10.0.2': {}
 
-  '@talon-sandbox/react@file:../talon-sandbox-ui/packages/react(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@talon-sandbox/react@0.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@talon-sandbox/tokens': file:../talon-sandbox-ui/packages/tokens
+      '@talon-sandbox/tokens': 0.1.0
       clsx: 2.1.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@talon-sandbox/tokens@file:../talon-sandbox-ui/packages/tokens': {}
+  '@talon-sandbox/tokens@0.1.0': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
