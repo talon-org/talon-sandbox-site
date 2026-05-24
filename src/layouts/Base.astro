@@ -24,11 +24,17 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
   <script is:inline>
-    // Apply saved mode before paint to avoid flash
+    // Apply saved mode before paint to avoid flash + sync toggle button state
     (function() {
       try {
         var m = localStorage.getItem('tln-mode') || 'dark';
         document.documentElement.setAttribute('data-mode', m);
+        // Toggle buttons are rendered later in body; sync them after DOM ready.
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('[data-mode-set]').forEach(function(b) {
+            b.setAttribute('aria-pressed', b.dataset.modeSet === m ? 'true' : 'false');
+          });
+        });
       } catch(e) {}
     })();
   </script>
