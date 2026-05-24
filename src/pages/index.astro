@@ -251,9 +251,9 @@ import HeroTerminal from '../components/HeroTerminal.tsx';
           <div class="step-ix" aria-hidden="true">01</div>
           <h3>拉起</h3>
           <p>指定 image / 资源 / 网络策略，Sandbox.create() 返回时，VM 已经在另一端等你。</p>
-          <pre class="code-block" tabindex="0"><code><span class="tok-c"># pip install talon-sdk</span>
-<span class="tok-k">from</span> talon <span class="tok-k">import</span> Sandbox
-sb = <span class="tok-fn">Sandbox.create</span>(
+          <pre class="code-block" tabindex="0"><code><span class="tok-c"># pip install talon-sandbox</span>
+<span class="tok-k">from</span> talon_sandbox <span class="tok-k">import</span> Sandbox
+sb = <span class="tok-k">await</span> <span class="tok-fn">Sandbox.create</span>(
   image=<span class="tok-s">"node:20-bookworm"</span>,
   resources=&lbrace;<span class="tok-s">"cpu"</span>: 2, <span class="tok-s">"memory"</span>: <span class="tok-s">"4GiB"</span>&rbrace;,
   network=<span class="tok-s">"allowlist"</span>,
@@ -277,7 +277,7 @@ pty.<span class="tok-fn">on</span>(<span class="tok-s">"data"</span>, <span clas
           <p>一行代码把端口暴露为公共 preview URL。可加签名、限流、TTL，关闭 sandbox 就回收。</p>
           <pre class="code-block" tabindex="0"><code><span class="tok-c"># instant preview URL</span>
 url = <span class="tok-k">await</span> sb.<span class="tok-fn">expose</span>(<span class="tok-s">5173</span>)
-<span class="tok-c"># https://sb-42a1-5173.preview.talon.dev</span>
+<span class="tok-c"># https://sb-42a1-5173.preview.sandbox.talon.net.cn</span>
 <span class="tok-fn">print</span>(url)
 <span class="tok-c"># auto-cleaned on sandbox.kill()</span></code></pre>
         </article>
