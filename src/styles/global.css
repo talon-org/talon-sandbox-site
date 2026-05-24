@@ -323,7 +323,8 @@ section.tight {
   font-size: 12.5px;
   line-height: 1.7;
   color: var(--fg-1);
-  min-height: 380px;
+  /* 11 帧 × 21.25px(line 12.5 × 1.7)+ 1 agent margin-top 8 + padding 36 ≈ 278 */
+  min-height: 280px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
