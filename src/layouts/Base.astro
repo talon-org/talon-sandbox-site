@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Talon · 给 AI agent 的计算机',
+  description = '90 毫秒拉起隔离 sandbox。把 PTY 流回模型，看它写代码、装依赖、暴露 preview URL —— 全部在你设定的网络策略下。',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh" data-mode="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <script is:inline>
+    // Apply saved mode before paint to avoid flash
+    (function() {
+      try {
+        var m = localStorage.getItem('tln-mode') || 'dark';
+        document.documentElement.setAttribute('data-mode', m);
+      } catch(e) {}
+    })();
+  </script>
+</head>
+<body>
+  <slot />
+  <!-- mode toggle script injected inline below -->
+  <script is:inline>
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-mode-set]');
+      if (!btn) return;
+      var mode = btn.dataset.modeSet;
+      if (!mode) return;
+      document.documentElement.setAttribute('data-mode', mode);
+      document.querySelectorAll('[data-mode-set]').forEach(function(b) {
+        b.setAttribute('aria-pressed', b.dataset.modeSet === mode ? 'true' : 'false');
+      });
+      try { localStorage.setItem('tln-mode', mode); } catch(err) {}
+    });
+  </script>
+</body>
+</html>

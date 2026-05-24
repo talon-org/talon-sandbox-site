@@ -1,0 +1,1271 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import HeroTerminal from '../components/HeroTerminal.tsx';
+---
+
+<Base
+  title="Talon · 给 AI agent 的计算机"
+  description="90 毫秒拉起隔离 sandbox。把 PTY 流回模型，看它写代码、装依赖、暴露 preview URL —— 全部在你设定的网络策略下。"
+>
+  <Nav currentPath="/" />
+
+  <!-- ───── HERO ───── -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="eyebrow">AGENT SANDBOX RUNTIME</div>
+        <h1 class="huge">
+          为 AI agent 准备的<br />
+          一台 <i class="acc">随用随启</i> 的计算机
+        </h1>
+        <p class="lead" style="margin-left:auto;margin-right:auto;text-align:center">
+          90 毫秒拉起隔离 sandbox。把 PTY 流回模型，看它写代码、装依赖、暴露 preview URL —— 全部在你设定的网络策略下。
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">
+            免费开始
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a class="btn btn-lg" href="#how">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 1.5h6L13 5v9a1 1 0 01-1 1H3.5a1 1 0 01-1-1V2.5a1 1 0 011-1z"/><path d="M9 1.5V5h4"/></svg>
+            查看文档
+          </a>
+        </div>
+
+        <HeroTerminal client:load />
+
+        <div class="meta-row" role="list">
+          <span role="listitem">&lt;90ms 冷启动</span>
+          <span role="listitem">microVM 强隔离</span>
+          <span role="listitem">流式 PTY + 录像</span>
+          <span role="listitem">Python · TypeScript SDK</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── LOGO WALL ───── -->
+  <div class="logo-wall" aria-label="合作团队">
+    <div class="container">
+      <div class="l-text">已为这些团队的 agent 提供运行时</div>
+      <div class="logos-wrap">
+        <span class="logo-item"><span class="logo-dot" aria-hidden="true"></span>acme.dev</span>
+        <span class="logo-item"><span class="logo-dot" aria-hidden="true" style="border-radius:0;transform:rotate(45deg)"></span>codex labs</span>
+        <span class="logo-item"><span class="logo-tri" aria-hidden="true"></span>foundation</span>
+        <span class="logo-item"><span class="logo-dot" aria-hidden="true" style="clip-path:polygon(0 0, 100% 50%, 0 100%);border-radius:0"></span>raven ai</span>
+        <span class="logo-item">◆ thread.so</span>
+        <span class="logo-item">▣ paper inc.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── VALUES ───── -->
+  <section class="values-section" id="values">
+    <div class="container">
+      <div class="eyebrow" style="display:block;text-align:center;margin-bottom:18px">为什么是 Talon</div>
+      <h2 class="big" style="text-align:center">三件事，我们做到极致。</h2>
+      <p class="lead" style="text-align:center;margin:0 auto 56px">
+        不卖功能堆砌。Talon 只在三件事上拼命：启动快、隔离稳、过程透明。
+      </p>
+      <div class="values-grid">
+        <article class="value-card">
+          <div class="v-ix" aria-hidden="true">01</div>
+          <div class="v-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 1L3 9h4l-1 6 6-8H8l1-6z"/>
+            </svg>
+          </div>
+          <h3>&lt;90ms 冷启动</h3>
+          <p>agent 调用 <code>Sandbox.create()</code>，sandbox 已经在那等它。微 VM 镜像走 warm pool，从空闲到可写入文件不到一百毫秒。</p>
+          <div class="v-meta">P95 · <strong>87 ms</strong> · 跨三个区域</div>
+        </article>
+
+        <article class="value-card">
+          <div class="v-ix" aria-hidden="true">02</div>
+          <div class="v-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 2l5 1.5v4c0 2.8-2.2 5.4-5 6-2.8-.6-5-3.2-5-6V3.5L8 2z"/>
+            </svg>
+          </div>
+          <h3>microVM 强隔离</h3>
+          <p>每个 sandbox 是独立 Kata / Firecracker 微 VM，自己的 kernel、文件系统、网络栈。AI 写出来的任何代码都跑在它自己的笼子里。</p>
+          <div class="v-meta">SOC 2 · HIPAA · 满足 <strong>SLSA L4</strong></div>
+        </article>
+
+        <article class="value-card">
+          <div class="v-ix" aria-hidden="true">03</div>
+          <div class="v-icon" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2.5" width="12" height="11" rx="1"/>
+              <path d="M5 2.5v11M11 2.5v11M2 5.5h3M2 8h3M2 10.5h3M11 5.5h3M11 8h3M11 10.5h3"/>
+            </svg>
+          </div>
+          <h3>流式 PTY + 全程录像</h3>
+          <p>PTY 数据帧实时回流到你的模型。每个会话自动录像为可回放、可审计的 .cast 文件 —— agent 写错代码时你能精确回到那一帧。</p>
+          <div class="v-meta">支持 asciinema · <strong>tamper-evident</strong> chain</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── SHOWCASE ───── -->
+  <section class="showcase-section">
+    <div class="container-wide">
+      <div class="showcase-row">
+        <div class="showcase-copy">
+          <div class="eyebrow">控制台</div>
+          <h2 class="big">为工程师做的界面，<br />不是为周报。</h2>
+          <p class="lead">
+            每个 sandbox 的状态、进程、端口、文件、网络流量、审计事件，一屏看完。⌘K 跳到任何地方。
+          </p>
+          <ul class="feature-list" role="list">
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>
+              <span><b>实时指标</b><span class="desc">CPU / 内存 / 出站流量按秒滚动，数字直接动起来</span></span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>
+              <span><b>8 档状态机</b><span class="desc">从 provisioning 到 evicted，每一档都有自己的呼吸节奏</span></span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>
+              <span><b>cmd-k 命令栏</b><span class="desc">键盘优先 · 跳转、操作、搜索从不离开主屏</span></span>
+            </li>
+            <li>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>
+              <span><b>深浅双色</b><span class="desc">8 套配色 · 紧凑 / 标准 / 宽松三档密度 · 一套字体可换</span></span>
+            </li>
+          </ul>
+          <div style="margin-top:32px">
+            <a class="btn btn-lg" href="https://playground.sandbox.talon.net.cn" target="_blank" rel="noopener">
+              查看 Playground
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2.5h4.5V7M13.5 2.5L7.5 8.5"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Dashboard mock -->
+        <div class="mock-frame" role="img" aria-label="Talon 控制台预览截图">
+          <div class="mock-side">
+            <div class="mock-brand">
+              <span class="mock-mark" aria-hidden="true"></span>
+              <span class="mock-wm">talon</span>
+            </div>
+            <div>
+              <div class="mock-lbl">工作区</div>
+              <nav class="mock-nav">
+                <div class="mock-nav-item mock-nav-on"><span class="mock-dot mock-dot-acc"></span>仪表盘</div>
+                <div class="mock-nav-item"><span class="mock-dot"></span>沙箱</div>
+                <div class="mock-nav-item"><span class="mock-dot"></span>录像</div>
+                <div class="mock-nav-item"><span class="mock-dot"></span>凭据</div>
+                <div class="mock-nav-item"><span class="mock-dot"></span>审计</div>
+              </nav>
+            </div>
+            <div>
+              <div class="mock-lbl">管理</div>
+              <nav class="mock-nav">
+                <div class="mock-nav-item"><span class="mock-dot"></span>节点</div>
+                <div class="mock-nav-item"><span class="mock-dot"></span>租户</div>
+              </nav>
+            </div>
+          </div>
+          <div class="mock-main">
+            <div class="mock-header">
+              <span class="mock-title">仪表盘</span>
+              <button class="mock-btn-new" tabindex="-1" aria-hidden="true">+ 新 sandbox</button>
+            </div>
+            <div class="mock-stats-grid">
+              <div class="mock-stat">
+                <span class="mock-stat-k">运行中</span>
+                <span class="mock-stat-v">18</span>
+                <svg class="mock-spark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 14 L10 12 L20 13 L30 8 L40 10 L50 6 L60 7 L70 4 L80 5 L90 3 L100 4" fill="none" stroke="var(--acc-strong)" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+              <div class="mock-stat">
+                <span class="mock-stat-k">vCPU</span>
+                <span class="mock-stat-v">14.8<span class="mock-unit">/48</span></span>
+                <svg class="mock-spark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 10 L10 8 L20 12 L30 11 L40 7 L50 9 L60 6 L70 8 L80 5 L90 7 L100 4" fill="none" stroke="var(--acc-strong)" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+              <div class="mock-stat">
+                <span class="mock-stat-k">内存</span>
+                <span class="mock-stat-v">42<span class="mock-unit">GiB</span></span>
+                <svg class="mock-spark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 12 L10 10 L20 11 L30 9 L40 8 L50 9 L60 7 L70 5 L80 6 L90 4 L100 5" fill="none" stroke="var(--info)" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+              <div class="mock-stat">
+                <span class="mock-stat-k">出站</span>
+                <span class="mock-stat-v">1.7<span class="mock-unit">MB/s</span></span>
+                <svg class="mock-spark" viewBox="0 0 100 20" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 8 L10 10 L20 7 L30 11 L40 9 L50 13 L60 10 L70 14 L80 12 L90 15 L100 13" fill="none" stroke="var(--info)" stroke-width="1.4" vector-effect="non-scaling-stroke"/>
+                </svg>
+              </div>
+            </div>
+            <div class="mock-table">
+              <div class="mock-row mock-row-head">
+                <div>SANDBOX</div><div>镜像</div><div>运行时长</div><div>状态</div>
+              </div>
+              <div class="mock-row">
+                <div class="mock-cell-id"><span class="mock-status-dot mock-status-ok"></span>sb_42a1</div>
+                <div class="mock-mono">node:20-bookworm</div>
+                <div class="mock-mono">12m 04s</div>
+                <div><span class="mock-badge mock-badge-ok">● 运行中</span></div>
+              </div>
+              <div class="mock-row">
+                <div class="mock-cell-id"><span class="mock-status-dot mock-status-ok"></span>sb_9c0e</div>
+                <div class="mock-mono">python:3.12-slim</div>
+                <div class="mock-mono">02m 14s</div>
+                <div><span class="mock-badge mock-badge-ok">● 运行中</span></div>
+              </div>
+              <div class="mock-row">
+                <div class="mock-cell-id"><span class="mock-status-dot mock-status-idle"></span>sb_71f3</div>
+                <div class="mock-mono">ubuntu:24.04</div>
+                <div class="mock-mono">1h 02m</div>
+                <div><span class="mock-badge mock-badge-idle">● 空闲</span></div>
+              </div>
+              <div class="mock-row">
+                <div class="mock-cell-id"><span class="mock-status-dot mock-status-fail"></span>sb_5b8d</div>
+                <div class="mock-mono">custom-ai:latest</div>
+                <div class="mock-mono">3m 41s</div>
+                <div><span class="mock-badge mock-badge-fail">● 失败</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── HOW IT WORKS ───── -->
+  <section class="how-section" id="how">
+    <div class="container">
+      <div class="eyebrow" style="display:block;text-align:center;margin-bottom:18px">3 步接入</div>
+      <h2 class="big" style="text-align:center;margin-bottom:56px">从注册到第一个 sandbox，不超过 60 秒。</h2>
+      <div class="how-steps">
+        <article class="how-step">
+          <div class="step-ix" aria-hidden="true">01</div>
+          <h3>拉起</h3>
+          <p>指定 image / 资源 / 网络策略，Sandbox.create() 返回时，VM 已经在另一端等你。</p>
+          <pre class="code-block" tabindex="0"><code><span class="tok-c"># pip install talon-sdk</span>
+<span class="tok-k">from</span> talon <span class="tok-k">import</span> Sandbox
+sb = <span class="tok-fn">Sandbox.create</span>(
+  image=<span class="tok-s">"node:20-bookworm"</span>,
+  resources=&lbrace;<span class="tok-s">"cpu"</span>: 2, <span class="tok-s">"memory"</span>: <span class="tok-s">"4GiB"</span>&rbrace;,
+  network=<span class="tok-s">"allowlist"</span>,
+)</code></pre>
+        </article>
+
+        <article class="how-step">
+          <div class="step-ix" aria-hidden="true">02</div>
+          <h3>运行</h3>
+          <p>把任何命令丢进去 · 拿 PTY 流回你的模型 · 文件读写、进程管理、git 操作全程在 SDK 一行。</p>
+          <pre class="code-block" tabindex="0"><code><span class="tok-c"># stream stdout back to your LLM</span>
+pty = <span class="tok-k">await</span> sb.terminal.<span class="tok-fn">open</span>()
+pty.<span class="tok-fn">on</span>(<span class="tok-s">"data"</span>, <span class="tok-k">lambda</span> ch:
+    llm.<span class="tok-fn">feed</span>(ch))
+<span class="tok-k">await</span> pty.<span class="tok-fn">write</span>(<span class="tok-s">"npm run dev\n"</span>)</code></pre>
+        </article>
+
+        <article class="how-step">
+          <div class="step-ix" aria-hidden="true">03</div>
+          <h3>暴露</h3>
+          <p>一行代码把端口暴露为公共 preview URL。可加签名、限流、TTL，关闭 sandbox 就回收。</p>
+          <pre class="code-block" tabindex="0"><code><span class="tok-c"># instant preview URL</span>
+url = <span class="tok-k">await</span> sb.<span class="tok-fn">expose</span>(<span class="tok-s">5173</span>)
+<span class="tok-c"># https://sb-42a1-5173.preview.talon.dev</span>
+<span class="tok-fn">print</span>(url)
+<span class="tok-c"># auto-cleaned on sandbox.kill()</span></code></pre>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── USE CASES ───── -->
+  <section class="cases-section" id="cases">
+    <div class="container">
+      <div class="eyebrow" style="display:block;text-align:center;margin-bottom:18px">谁在用 Talon</div>
+      <h2 class="big" style="text-align:center">不同 agent · 同一台计算机</h2>
+      <div class="cases-grid">
+        <article class="case-card">
+          <div class="eyebrow" style="margin:0;font-size:10.5px">CODING AGENT</div>
+          <h3>AI 编程助手</h3>
+          <p>让 agent 自己 clone 项目 / 装依赖 / 跑测试 / 开 PR。每一步都有终端记录，失败可回放精确到那一行。</p>
+          <div class="case-who">acme · raven ai · codex labs</div>
+        </article>
+
+        <article class="case-card">
+          <div class="eyebrow" style="margin:0;font-size:10.5px">DATA AGENT</div>
+          <h3>数据分析 agent</h3>
+          <p>Python kernel 跑 pandas / matplotlib，图表通过 expose() 直出。模型看见输出，自己决定下一步。</p>
+          <div class="case-who">paper inc. · thread.so · 17 fintech 客户</div>
+        </article>
+
+        <article class="case-card">
+          <div class="eyebrow" style="margin:0;font-size:10.5px">REVIEW AGENT</div>
+          <h3>代码审查 agent</h3>
+          <p>CI hook 触发 sandbox · 跑 lint / 静态分析 / 安全扫描 · 直接评论到 PR。完全无服务器维护。</p>
+          <div class="case-who">foundation · 多家 YC 公司</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── PRICING ───── -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="eyebrow" style="display:block;text-align:center;margin-bottom:18px">价格</div>
+      <h2 class="big" style="text-align:center">按 sandbox 秒数计费 · 不绑年</h2>
+      <p class="lead" style="text-align:center;margin:0 auto 48px">
+        免费额度足够试跑一个 agent 一周。Team 起价低于自建 K8s 的电费。
+      </p>
+      <div class="tiers-grid">
+        <!-- FREE -->
+        <article class="tier">
+          <div class="tier-name">免费</div>
+          <div class="tier-price">
+            <span class="tier-num">¥0</span>
+            <span class="tier-unit">/ 月</span>
+          </div>
+          <p class="tier-desc">单人原型 · 周末实验 · 自己玩 agent</p>
+          <ul class="tier-features" role="list">
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>$5 / 月免费额度</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>2 vCPU · 4 GiB / sandbox 上限</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>公共 image registry</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>7 天审计 / 录像</li>
+            <li class="tier-no"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>无私有 registry</li>
+            <li class="tier-no"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>无 SLA</li>
+          </ul>
+          <div class="tier-cta">
+            <a class="btn" style="width:100%;justify-content:center" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">开始用</a>
+          </div>
+        </article>
+
+        <!-- TEAM -->
+        <article class="tier tier-featured">
+          <span class="tier-badge">最热门</span>
+          <div class="tier-name">团队</div>
+          <div class="tier-price">
+            <span class="tier-num">¥199</span>
+            <span class="tier-unit">/ 月</span>
+          </div>
+          <p class="tier-desc">小型 AI 团队 · 创业公司 · 多 agent 协作</p>
+          <ul class="tier-features" role="list">
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>$200 / 月含运行额度</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>16 vCPU · 32 GiB · 80 GiB 配额</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>私有 registry · 按租户加密</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>无限审计 / 录像保留</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>3 个 region 全开</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>99.9% SLA</li>
+          </ul>
+          <div class="tier-cta">
+            <a class="btn btn-primary" style="width:100%;justify-content:center" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">开始 14 天试用</a>
+          </div>
+        </article>
+
+        <!-- ENTERPRISE -->
+        <article class="tier">
+          <div class="tier-name">企业</div>
+          <div class="tier-price">
+            <span class="tier-num" style="font-size:36px">定制</span>
+          </div>
+          <p class="tier-desc">大规模 · 行业合规 · 私有部署 · BYOC</p>
+          <ul class="tier-features" role="list">
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>无上限配额</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>BYOC · 在你的 AWS / GCP / 私有云上跑</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>SOC 2 / HIPAA / GDPR · DPA 签署</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>SSO · SCIM · 自定义 RBAC</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>99.99% SLA · 7x24 工程师对接</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>客户专属 KMS / 审计导出</li>
+          </ul>
+          <div class="tier-cta">
+            <a class="btn" style="width:100%;justify-content:center" href="mailto:sales@talon.net.cn">联系销售</a>
+          </div>
+        </article>
+      </div>
+      <p class="pricing-foot">所有方案 · 按秒计费 · sandbox 关闭即停 · 不绑年</p>
+    </div>
+  </section>
+
+  <!-- ───── PROOF ───── -->
+  <section class="proof-section">
+    <div class="container">
+      <blockquote class="quote">
+        过去半年我们试了五家 sandbox 提供商。Talon 是唯一一家让我们的 agent 能"放手跑"的 —— 启动够快，隔离够紧，录像让我们能事后看清每一步。
+      </blockquote>
+      <div class="quote-author">
+        <strong>JAMIE LIU</strong> · CTO @ raven ai · YC W25
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── FINAL CTA ───── -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="eyebrow" style="display:inline-flex">90 秒上手</div>
+        <h2 class="big">让你的下一个 agent<br />跑在 Talon 上。</h2>
+        <p class="lead-c">
+          免费额度 · 不需要信用卡 · 注册到第一个 sandbox 平均 47 秒。
+        </p>
+        <div class="final-ctas">
+          <a class="btn btn-primary btn-lg" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">
+            免费开始
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a class="btn btn-lg" href="mailto:demo@talon.net.cn">预约 30 分钟演示</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+/* ─── Hero ─── */
+.hero {
+  padding-top: 88px;
+  padding-bottom: 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: -1px -1px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 1200px 720px at 50% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 1200px 720px at 50% 0%, black 30%, transparent 75%);
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 56px;
+}
+
+.meta-row {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin: 32px auto 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-3);
+  flex-wrap: wrap;
+}
+
+.meta-row span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.meta-row span::before {
+  content: '\00B7';
+  color: var(--fg-4);
+}
+
+/* Hero terminal styles live in global.css */
+
+/* ─── Logo wall ─── */
+.logo-wall {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 0;
+  background: var(--bg-1);
+}
+
+.l-text {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.logos-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 32px;
+  flex-wrap: wrap;
+  opacity: 0.6;
+}
+
+.logo-item {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--fg-2);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--fg-2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.logo-tri {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid var(--fg-2);
+  flex-shrink: 0;
+}
+
+/* ─── Values ─── */
+.values-section {
+  background: var(--bg-1);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r-4);
+  overflow: hidden;
+}
+
+@media (max-width: 880px) {
+  .values-grid { grid-template-columns: 1fr; }
+}
+
+.value-card {
+  background: var(--bg-1);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.v-ix {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.08em;
+}
+
+.v-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-2);
+  background: var(--acc-soft);
+  color: var(--acc-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.v-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.value-card h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.value-card p {
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.value-card code {
+  font-family: var(--font-mono);
+  color: var(--acc-strong);
+  font-size: 12px;
+}
+
+.v-meta {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.v-meta strong {
+  color: var(--acc-strong);
+  font-weight: 600;
+}
+
+/* ─── Showcase ─── */
+.showcase-section {
+  padding-top: 56px;
+  padding-bottom: 96px;
+}
+
+.showcase-row {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .showcase-row { grid-template-columns: 1fr; }
+}
+
+.feature-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.feature-list li {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--fg-1);
+  line-height: 1.6;
+}
+
+.feature-list li svg {
+  color: var(--acc-strong);
+  margin-top: 4px;
+}
+
+.feature-list b {
+  color: var(--fg-0);
+  font-weight: 600;
+  display: block;
+}
+
+.feature-list .desc {
+  color: var(--fg-2);
+  font-size: 13px;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Mock frame */
+.mock-frame {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-4);
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.2);
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  font-size: 11.5px;
+  position: relative;
+  min-height: 380px;
+}
+
+.mock-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%);
+  pointer-events: none;
+}
+
+.mock-side {
+  background: var(--bg-1);
+  border-right: 1px solid var(--line);
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mock-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mock-mark {
+  width: 11px;
+  height: 11px;
+  background: var(--acc);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  flex-shrink: 0;
+}
+
+.mock-wm {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-0);
+  font-weight: 500;
+}
+
+.mock-lbl {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-3);
+  padding: 6px 6px 4px;
+}
+
+.mock-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.mock-nav-item {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--fg-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mock-nav-on {
+  background: var(--bg-3);
+  color: var(--fg-0);
+  font-weight: 500;
+}
+
+.mock-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--fg-4);
+  flex-shrink: 0;
+}
+
+.mock-dot-acc {
+  background: var(--acc);
+}
+
+.mock-main {
+  padding: 14px 16px;
+  overflow: hidden;
+}
+
+.mock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.mock-title {
+  font-size: 14px;
+  color: var(--fg-0);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.mock-btn-new {
+  height: 22px;
+  padding: 0 9px;
+  border-radius: 5px;
+  background: var(--acc);
+  color: var(--acc-fg);
+  font-size: 10.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  cursor: default;
+}
+
+.mock-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.mock-stat {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mock-stat-k {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-3);
+}
+
+.mock-stat-v {
+  font-size: 17px;
+  color: var(--fg-0);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.mock-unit {
+  font-size: 9.5px;
+  color: var(--fg-3);
+  font-family: var(--font-mono);
+  margin-left: 2px;
+}
+
+.mock-spark {
+  height: 20px;
+  margin-top: 2px;
+  width: 100%;
+}
+
+.mock-table {
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.mock-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.7fr 0.7fr;
+  padding: 6px 10px;
+  gap: 8px;
+  font-size: 10.5px;
+  align-items: center;
+}
+
+.mock-row-head {
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-3);
+}
+
+.mock-row + .mock-row {
+  border-top: 1px solid var(--line-soft);
+}
+
+.mock-cell-id {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  color: var(--fg-1);
+  font-size: 11px;
+}
+
+.mock-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.mock-status-ok {
+  background: var(--ok);
+  box-shadow: 0 0 0 3px var(--ok-soft);
+  animation: tln-pulse 1.6s ease-in-out infinite;
+}
+
+.mock-status-idle {
+  background: var(--fg-3);
+}
+
+.mock-status-fail {
+  background: var(--err);
+}
+
+.mock-mono {
+  font-family: var(--font-mono);
+  color: var(--fg-2);
+  font-size: 10.5px;
+}
+
+.mock-badge {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mock-badge-ok { color: var(--ok); }
+.mock-badge-idle { color: var(--fg-3); }
+.mock-badge-fail { color: var(--err); }
+
+/* ─── How it works ─── */
+.how-section {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 880px) {
+  .how-steps { grid-template-columns: 1fr; }
+}
+
+.how-step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step-ix {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--acc-strong);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.how-step h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.how-step p {
+  color: var(--fg-2);
+  font-size: 13.5px;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.code-block {
+  margin: 8px 0 0;
+  background: var(--bg-0);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--acc-line);
+  border-radius: var(--r-2);
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--fg-1);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.code-block code {
+  font-family: inherit;
+}
+
+/* tok-* classes live in global.css */
+
+/* ─── Cases ─── */
+.cases-section {
+  background: var(--bg-0);
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+@media (max-width: 980px) {
+  .cases-grid { grid-template-columns: 1fr; }
+}
+
+.case-card {
+  border: 1px solid var(--line);
+  border-radius: var(--r-3);
+  padding: 28px;
+  background: var(--bg-2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.case-card h3 {
+  font-size: 19px;
+  margin: 0;
+}
+
+.case-card p {
+  color: var(--fg-2);
+  font-size: 13.5px;
+  margin: 0;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.case-who {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* ─── Pricing ─── */
+.pricing-section {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 980px) {
+  .tiers-grid { grid-template-columns: 1fr; }
+}
+
+.tier {
+  border: 1px solid var(--line);
+  border-radius: var(--r-4);
+  padding: 32px;
+  background: var(--bg-2);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+.tier-featured {
+  border-color: var(--acc-line);
+  background: linear-gradient(180deg, var(--acc-soft), transparent 40%), var(--bg-2);
+}
+
+.tier-badge {
+  position: absolute;
+  top: -10px;
+  right: 24px;
+  background: var(--acc);
+  color: var(--acc-fg);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 4px 9px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.tier-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-3);
+}
+
+.tier-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.tier-num {
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--fg-0);
+  letter-spacing: -0.03em;
+}
+
+.tier-unit {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-3);
+}
+
+.tier-desc {
+  color: var(--fg-2);
+  font-size: 13.5px;
+  line-height: 1.6;
+  min-height: 42px;
+  margin: 0;
+}
+
+.tier-features {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.tier-features li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--fg-1);
+  align-items: flex-start;
+}
+
+.tier-features li svg {
+  color: var(--ok);
+  margin-top: 4px;
+}
+
+.tier-no {
+  color: var(--fg-3) !important;
+}
+
+.tier-no svg {
+  color: var(--fg-4) !important;
+}
+
+.tier-cta {
+  margin-top: 20px;
+}
+
+.pricing-foot {
+  margin-top: 32px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.08em;
+}
+
+/* ─── Proof ─── */
+.proof-section {
+  text-align: center;
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+}
+
+.quote {
+  font-size: 22px;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--fg-0);
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto 22px;
+  font-style: normal;
+}
+
+.quote::before {
+  content: '\201C ';
+  color: var(--acc-strong);
+  font-family: var(--font-mono);
+}
+
+.quote::after {
+  content: ' \201D';
+  color: var(--acc-strong);
+  font-family: var(--font-mono);
+}
+
+.quote-author {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--fg-3);
+}
+
+.quote-author strong {
+  color: var(--fg-1);
+  font-weight: 500;
+}
+
+/* ─── Final CTA ─── */
+.final-cta {
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 700px 400px at 50% 50%, black, transparent 70%);
+  pointer-events: none;
+}
+
+.final-cta-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.final-cta .big {
+  margin-bottom: 16px;
+}
+
+.lead-c {
+  color: var(--fg-2);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.final-ctas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+</style>

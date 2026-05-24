@@ -1,0 +1,247 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="关于 Talon · 给 AI agent 的计算机"
+  description="Talon 是一个为 AI agent 构建的沙箱运行时。我们相信 agent 需要一台随时可用、强隔离、全透明的计算机。"
+>
+  <Nav currentPath="/about" />
+
+  <main>
+    <section class="about-hero">
+      <div class="container">
+        <div class="eyebrow">产品理念</div>
+        <h1 class="huge" style="max-width:800px">
+          我们在做一台<br /><i class="acc">专为 agent 设计</i>的计算机
+        </h1>
+        <p class="lead">
+          AI agent 不是人。它们不需要 GUI，不需要等你点击。它们需要的是：一个启动即可用的环境、一条能把终端输出流回模型的通道、以及一个出了问题可以精确回放的录像。
+        </p>
+      </div>
+    </section>
+
+    <section class="about-beliefs">
+      <div class="container">
+        <h2 class="big">我们相信的几件事</h2>
+        <div class="beliefs-list">
+          <article class="belief">
+            <div class="belief-num" aria-hidden="true">01</div>
+            <div>
+              <h3>启动延迟是 agent 的第一个瓶颈</h3>
+              <p>每次 agent 需要一个新环境，它都在等待。90ms 的冷启动不是噱头，它决定了一个 agent 能在一分钟内尝试多少次不同的解法。</p>
+            </div>
+          </article>
+
+          <article class="belief">
+            <div class="belief-num" aria-hidden="true">02</div>
+            <div>
+              <h3>隔离不是选项，是基础设施</h3>
+              <p>AI 写的代码可能做任何事情。每个 sandbox 独立的 microVM kernel、网络栈和文件系统，不是为了让你睡得着觉，是为了让你真的能放手让 agent 跑。</p>
+            </div>
+          </article>
+
+          <article class="belief">
+            <div class="belief-num" aria-hidden="true">03</div>
+            <div>
+              <h3>可观测性是调试 agent 的前提</h3>
+              <p>当 agent 失败时，你需要知道它做了什么，精确到哪一帧。tamper-evident 的 .cast 录像文件让这个问题从"猜测"变成"回放"。</p>
+            </div>
+          </article>
+
+          <article class="belief">
+            <div class="belief-num" aria-hidden="true">04</div>
+            <div>
+              <h3>SDK 应该和你的模型说同一种语言</h3>
+              <p>Python 和 TypeScript 的 SDK 不是事后加上去的绑定层。每个 API 都是从 agent 的视角设计的：create、write、expose、kill，动词清晰，没有废话。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-team">
+      <div class="container">
+        <div class="team-inner">
+          <div class="eyebrow">团队</div>
+          <h2 class="big">从基础设施出发</h2>
+          <p class="lead">
+            我们来自云计算、容器运行时和 AI infra 背景。在大规模生产系统中工作过，见过够多"看起来没问题但规模上去就崩"的系统。
+          </p>
+          <p class="lead" style="margin-bottom:0">
+            Talon 是我们给自己做的基础设施，然后开放给所有人。Beta 阶段邀请制接入，如果你在做 agent 基础设施欢迎联系。
+          </p>
+          <div style="margin-top:36px">
+            <a class="btn btn-primary btn-lg" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">
+              申请 Beta 访问
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+            <a class="btn btn-lg" href="mailto:hello@talon.net.cn" style="margin-left:12px">
+              联系我们
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-metrics">
+      <div class="container">
+        <div class="metrics-grid" role="list">
+          <div class="metric" role="listitem">
+            <div class="metric-num">&lt;90ms</div>
+            <div class="metric-label">P95 冷启动</div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-num">3</div>
+            <div class="metric-label">可用区域</div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-num">8</div>
+            <div class="metric-label">sandbox 状态机状态</div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-num">47s</div>
+            <div class="metric-label">平均首次 sandbox 时间</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+.about-hero {
+  padding-top: 88px;
+  padding-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: -1px -1px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 1000px 600px at 20% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 1000px 600px at 20% 0%, black 30%, transparent 75%);
+  z-index: 0;
+}
+
+.about-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.about-beliefs {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+}
+
+.beliefs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 48px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-4);
+  overflow: hidden;
+}
+
+.belief {
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+  background: var(--bg-1);
+}
+
+.belief + .belief {
+  border-top: 1px solid var(--line);
+}
+
+.belief:hover {
+  background: var(--bg-2);
+}
+
+.belief-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--acc-strong);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  padding-top: 2px;
+}
+
+.belief h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.belief p {
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-team {
+  border-top: 1px solid var(--line);
+}
+
+.team-inner {
+  max-width: 720px;
+}
+
+.about-metrics {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+  padding: 64px 0;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r-4);
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.metric {
+  background: var(--bg-1);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.metric-num {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--fg-0);
+  font-family: var(--font-mono);
+}
+
+.metric-label {
+  font-size: 12px;
+  color: var(--fg-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  margin-top: 8px;
+}
+</style>

@@ -1,0 +1,177 @@
+---
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="brand-col">
+        <div class="brand-row">
+          <span class="mark" aria-hidden="true"></span>
+          <span class="wm">talon</span>
+        </div>
+        <p class="sub">给 AI agent 的随取随用计算机。</p>
+      </div>
+
+      <div class="col">
+        <h4>产品</h4>
+        <ul>
+          <li><a href="/#values">功能</a></li>
+          <li><a href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">SDK 文档</a></li>
+          <li><a href="/#pricing">价格</a></li>
+          <li><a href="/#how">快速上手</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>开发者</h4>
+        <ul>
+          <li><a href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">Python SDK</a></li>
+          <li><a href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">TypeScript SDK</a></li>
+          <li><a href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">REST API</a></li>
+          <li><a href="https://playground.sandbox.talon.net.cn" target="_blank" rel="noopener">Playground</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>公司</h4>
+        <ul>
+          <li><a href="/about">关于</a></li>
+          <li><a href="https://github.com/talon-org" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h4>法律</h4>
+        <ul>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bot">
+      <span>&copy; 2026 Talon Computing Inc.</span>
+      <span class="status-badge">
+        <span class="status-dot" aria-hidden="true"></span>
+        所有系统运行正常
+      </span>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  padding: 64px 0 32px;
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 880px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.brand-col .brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.brand-col .mark {
+  width: 14px;
+  height: 14px;
+  background: var(--acc);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.brand-col .wm {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--fg-0);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.brand-col .sub {
+  font-size: 12px;
+  color: var(--fg-3);
+  line-height: 1.6;
+  max-width: 240px;
+  margin: 0;
+}
+
+.col h4 {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-3);
+  margin: 0 0 14px;
+  font-weight: 500;
+}
+
+.col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.col a {
+  color: var(--fg-2);
+  font-size: 13px;
+  transition: color var(--dur-fast);
+}
+
+.col a:hover {
+  color: var(--fg-0);
+}
+
+.footer-bot {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ok);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--ok);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--ok-soft);
+  animation: tln-pulse 1.6s ease-in-out infinite;
+}
+</style>
