@@ -323,7 +323,7 @@ section.tight {
   font-size: 12.5px;
   line-height: 1.7;
   color: var(--fg-1);
-  min-height: 248px;
+  min-height: 380px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -368,3 +368,9 @@ section.tight {
 .tok-s { color: var(--ok); }
 .tok-c { color: var(--fg-3); font-style: italic; }
 .tok-fn { color: var(--acc-strong); }
+
+/* ─── Light mode shadow overrides ─── */
+[data-mode="light"] .hero-term,
+[data-mode="light"] .mock-frame {
+  box-shadow: 0 0 0 1px var(--line), 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06);
+}
