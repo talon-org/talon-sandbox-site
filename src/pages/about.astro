@@ -14,10 +14,10 @@ import Footer from '../components/Footer.astro';
     <section class="about-hero">
       <div class="container">
         <div class="eyebrow">产品理念</div>
-        <h1 class="huge" style="max-width:800px">
+        <h1 class="huge" style="max-width:830px">
           我们在做一台<br /><i class="acc">专为 agent 设计</i>的计算机
         </h1>
-        <p class="lead">
+        <p class="lead" style="max-width: 800px">
           AI agent 不是人。它们不需要 GUI，不需要等你点击。它们需要的是：一个启动即可用的环境、一条能把终端输出流回模型的通道、以及一个出了问题可以精确回放的录像。
         </p>
       </div>
@@ -39,7 +39,7 @@ import Footer from '../components/Footer.astro';
             <div class="belief-num" aria-hidden="true">02</div>
             <div>
               <h3>隔离不是选项，是基础设施</h3>
-              <p>AI 写的代码可能做任何事情。每个 sandbox 独立的 microVM kernel、网络栈和文件系统，不是为了让你睡得着觉，是为了让你真的能放手让 agent 跑。</p>
+              <p>AI 写的代码可能做任何事情。每个 sandbox 是独立的 OCI 容器——自己的 PID namespace、网络栈、文件系统和 cgroup 资源限额，出站还能按策略收紧到白名单或完全封锁。不是为了让你睡得着觉，是为了让你真的能放手让 agent 跑。</p>
             </div>
           </article>
 
@@ -90,20 +90,20 @@ import Footer from '../components/Footer.astro';
       <div class="container">
         <div class="metrics-grid" role="list">
           <div class="metric" role="listitem">
-            <div class="metric-num">&lt;90ms</div>
-            <div class="metric-label">P95 冷启动</div>
-          </div>
-          <div class="metric" role="listitem">
-            <div class="metric-num">3</div>
-            <div class="metric-label">可用区域</div>
-          </div>
-          <div class="metric" role="listitem">
             <div class="metric-num">8</div>
             <div class="metric-label">sandbox 状态机状态</div>
           </div>
           <div class="metric" role="listitem">
-            <div class="metric-num">47s</div>
-            <div class="metric-label">平均首次 sandbox 时间</div>
+            <div class="metric-num">3</div>
+            <div class="metric-label">网络策略分级</div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-num">2</div>
+            <div class="metric-label">SDK 语言（Python · TS）</div>
+          </div>
+          <div class="metric" role="listitem">
+            <div class="metric-num">OCI</div>
+            <div class="metric-label">容器级隔离</div>
           </div>
         </div>
       </div>

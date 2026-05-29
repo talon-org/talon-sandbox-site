@@ -25,7 +25,7 @@ import HeroTerminal from '../components/HeroTerminal.tsx';
         </p>
         <div class="cta-row">
           <a class="btn btn-primary btn-lg" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">
-            免费开始
+            阅读文档
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
           <a class="btn btn-lg" href="#how">
@@ -38,8 +38,10 @@ import HeroTerminal from '../components/HeroTerminal.tsx';
 
         <div class="meta-row" role="list">
           <span role="listitem">&lt;90ms 冷启动</span>
-          <span role="listitem">microVM 强隔离</span>
+          <span role="listitem">容器级强隔离</span>
+          <span role="listitem">三档网络策略</span>
           <span role="listitem">流式 PTY + 录像</span>
+          <span role="listitem">内置 Chromium CDP</span>
           <span role="listitem">Python · TypeScript SDK</span>
         </div>
       </div>
@@ -78,7 +80,7 @@ import HeroTerminal from '../components/HeroTerminal.tsx';
             </svg>
           </div>
           <h3>&lt;90ms 冷启动</h3>
-          <p>agent 调用 <code>Sandbox.create()</code>，sandbox 已经在那等它。微 VM 镜像走 warm pool，从空闲到可写入文件不到一百毫秒。</p>
+          <p>agent 调用 <code>Sandbox.create()</code>，sandbox 已经在那等它。容器走 warm pool 预热，从空闲到可写入文件不到一百毫秒。</p>
           <div class="v-meta">P95 · <strong>87 ms</strong> · 跨三个区域</div>
         </article>
 
@@ -89,9 +91,9 @@ import HeroTerminal from '../components/HeroTerminal.tsx';
               <path d="M8 2l5 1.5v4c0 2.8-2.2 5.4-5 6-2.8-.6-5-3.2-5-6V3.5L8 2z"/>
             </svg>
           </div>
-          <h3>microVM 强隔离</h3>
-          <p>每个 sandbox 是独立 Kata / Firecracker 微 VM，自己的 kernel、文件系统、网络栈。AI 写出来的任何代码都跑在它自己的笼子里。</p>
-          <div class="v-meta">SOC 2 · HIPAA · 满足 <strong>SLSA L4</strong></div>
+          <h3>容器级强隔离</h3>
+          <p>每个 sandbox 是独立 OCI 容器，拥有自己的 PID namespace、文件系统、网络栈和 cgroup 资源限额。出站走三档网络策略（全放行 / 白名单 / 完全封锁），AI 写出来的任何代码都跑在它自己的笼子里。</p>
+          <div class="v-meta">命名空间隔离 · cgroup 限额 · <strong>出站策略可控</strong></div>
         </article>
 
         <article class="value-card">
@@ -318,52 +320,48 @@ url = <span class="tok-k">await</span> sb.<span class="tok-fn">expose</span>(<sp
   <!-- ───── PRICING ───── -->
   <section class="pricing-section" id="pricing">
     <div class="container">
-      <div class="eyebrow" style="display:block;text-align:center;margin-bottom:18px">价格</div>
-      <h2 class="big" style="text-align:center">按 sandbox 秒数计费 · 不绑年</h2>
+      <div class="eyebrow" style="display:block;text-align:center;margin-bottom:18px">价格 · 规划中</div>
+      <h2 class="big" style="text-align:center">定价方案规划中</h2>
       <p class="lead" style="text-align:center;margin:0 auto 48px">
-        免费额度足够试跑一个 agent 一周。Team 起价低于自建 K8s 的电费。
+        下面是规划中的方案分层。具体价格、配额与 SLA 尚未最终确定，敬请期待。
       </p>
       <div class="tiers-grid">
         <!-- FREE -->
         <article class="tier">
           <div class="tier-name">免费</div>
           <div class="tier-price">
-            <span class="tier-num">¥0</span>
-            <span class="tier-unit">/ 月</span>
+            <span class="tier-num" style="font-size:36px">规划中</span>
           </div>
           <p class="tier-desc">单人原型 · 周末实验 · 自己玩 agent</p>
           <ul class="tier-features" role="list">
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>$5 / 月免费额度</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>2 vCPU · 4 GiB / sandbox 上限</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>入门体验额度</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>单 sandbox 资源上限</li>
             <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>公共 image registry</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>7 天审计 / 录像</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>审计 / 录像（限期保留）</li>
             <li class="tier-no"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>无私有 registry</li>
-            <li class="tier-no"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>无 SLA</li>
           </ul>
           <div class="tier-cta">
-            <a class="btn" style="width:100%;justify-content:center" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">开始用</a>
+            <a class="btn" style="width:100%;justify-content:center" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">查看文档</a>
           </div>
         </article>
 
         <!-- TEAM -->
         <article class="tier tier-featured">
-          <span class="tier-badge">最热门</span>
+          <span class="tier-badge">规划中</span>
           <div class="tier-name">团队</div>
           <div class="tier-price">
-            <span class="tier-num">¥199</span>
-            <span class="tier-unit">/ 月</span>
+            <span class="tier-num" style="font-size:36px">规划中</span>
           </div>
           <p class="tier-desc">小型 AI 团队 · 创业公司 · 多 agent 协作</p>
           <ul class="tier-features" role="list">
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>$200 / 月含运行额度</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>16 vCPU · 32 GiB · 80 GiB 配额</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>更高资源配额</li>
             <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>私有 registry · 按租户加密</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>无限审计 / 录像保留</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>3 个 region 全开</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>99.9% SLA</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>审计 / 录像长期保留</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>多 region 部署</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>多 agent 协作管理</li>
           </ul>
           <div class="tier-cta">
-            <a class="btn btn-primary" style="width:100%;justify-content:center" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">开始 14 天试用</a>
+            <a class="btn btn-primary" style="width:100%;justify-content:center" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">查看文档</a>
           </div>
         </article>
 
@@ -371,23 +369,23 @@ url = <span class="tok-k">await</span> sb.<span class="tok-fn">expose</span>(<sp
         <article class="tier">
           <div class="tier-name">企业</div>
           <div class="tier-price">
-            <span class="tier-num" style="font-size:36px">定制</span>
+            <span class="tier-num" style="font-size:36px">规划中</span>
           </div>
-          <p class="tier-desc">大规模 · 行业合规 · 私有部署 · BYOC</p>
+          <p class="tier-desc">大规模 · 私有部署 · BYOC</p>
           <ul class="tier-features" role="list">
             <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>无上限配额</li>
             <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>BYOC · 在你的 AWS / GCP / 私有云上跑</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>SOC 2 / HIPAA / GDPR · DPA 签署</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>合规能力（SOC 2 / HIPAA / GDPR）规划中</li>
             <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>SSO · SCIM · 自定义 RBAC</li>
-            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>99.99% SLA · 7x24 工程师对接</li>
+            <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>SLA 与专属支持（规划中）</li>
             <li><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l3.5 3.5L13 5"/></svg>客户专属 KMS / 审计导出</li>
           </ul>
           <div class="tier-cta">
-            <a class="btn" style="width:100%;justify-content:center" href="mailto:sales@talon.net.cn">联系销售</a>
+            <a class="btn" style="width:100%;justify-content:center" href="mailto:sales@talon.net.cn">联系我们</a>
           </div>
         </article>
       </div>
-      <p class="pricing-foot">所有方案 · 按秒计费 · sandbox 关闭即停 · 不绑年</p>
+      <p class="pricing-foot">计费方式与正式定价规划中 · 进展会第一时间在文档与本页公布</p>
     </div>
   </section>
 
@@ -410,11 +408,11 @@ url = <span class="tok-k">await</span> sb.<span class="tok-fn">expose</span>(<sp
         <div class="eyebrow" style="display:inline-flex">90 秒上手</div>
         <h2 class="big">让你的下一个 agent<br />跑在 Talon Sandbox 上。</h2>
         <p class="lead-c">
-          免费额度 · 不需要信用卡 · 注册到第一个 sandbox 平均 47 秒。
+          产品开放中 · 查看文档，几行代码发出第一个 sandbox 请求。
         </p>
         <div class="final-ctas">
           <a class="btn btn-primary btn-lg" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">
-            免费开始
+            阅读文档
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
           <a class="btn btn-lg" href="mailto:demo@talon.net.cn">预约 30 分钟演示</a>
