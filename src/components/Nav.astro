@@ -43,8 +43,12 @@ const { currentPath = '/' } = Astro.props;
       </svg>
       GitHub
     </a>
-    <a class="btn btn-primary" href="https://docs.sandbox.talon.net.cn" target="_blank" rel="noopener">
-      开始使用
+    <!-- 登录按钮 → console（passwordless 注册=登录同一入口） -->
+    <a class="btn btn-ghost" href="https://app.sandbox.talon.net.cn/" rel="noopener">
+      登录
+    </a>
+    <a class="btn btn-primary" href="https://app.sandbox.talon.net.cn/" rel="noopener">
+      免费试用
       <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
     </a>
   </div>
