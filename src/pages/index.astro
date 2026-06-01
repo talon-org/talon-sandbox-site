@@ -270,9 +270,9 @@ sb = <span class="tok-k">await</span> <span class="tok-fn">Sandbox.create</span>
           <p>把任何命令丢进去 · 拿 PTY 流回你的模型 · 文件读写、进程管理、git 操作全程在 SDK 一行。</p>
           <pre class="code-block" tabindex="0"><code><span class="tok-c"># stream stdout back to your LLM</span>
 pty = <span class="tok-k">await</span> sb.terminal.<span class="tok-fn">open</span>()
-pty.<span class="tok-fn">on</span>(<span class="tok-s">"data"</span>, <span class="tok-k">lambda</span> ch:
-    llm.<span class="tok-fn">feed</span>(ch))
-<span class="tok-k">await</span> pty.<span class="tok-fn">write</span>(<span class="tok-s">"npm run dev\n"</span>)</code></pre>
+<span class="tok-k">await</span> pty.<span class="tok-fn">write</span>(<span class="tok-s">"npm run dev\n"</span>)
+<span class="tok-k">async for</span> ch <span class="tok-k">in</span> pty:
+    llm.<span class="tok-fn">feed</span>(ch)</code></pre>
         </article>
 
         <article class="how-step">
